@@ -17,17 +17,62 @@ function addBookToLibrary (title, author, numPages, isRead) {
 myLibrary.push(book1);
 myLibrary.push(book2);
 for (let i = 0; i < myLibrary.length; i++) {
-    let listItem = document.createElement("div");
+    const listItem = document.createElement("div");
     listItem.classList.add("card-component");
 
-    let innerhtml = `<p> Title: ${myLibrary[i].title}</p>\
-                     <p> Author: ${myLibrary[i].author}</p>
-                     <p> Number of Pages: ${myLibrary[i].numPages}</p>
-                     <p style="color: ${myLibrary[i].isRead ? "green" : "red"}"> IsRead: ${myLibrary[i].isRead ? "Read" : "Not read yet"}
-                     <div class="buttons">
-                     <button class = "button" style="background-color: red;">Remove</button>
-                     <button class="button" style="background-color: ${myLibrary[i].isRead ? "red" : "green"}">${myLibrary[i].isRead ? 'Not Read' : 'Read'} </button>`
-    listItem.innerHTML = innerhtml;
+    const title = document.createElement("p");
+    title.textContent = `Title: ${myLibrary[i].title}`;
+
+    const author = document.createElement("p");
+    author.textContent = `Author: ${myLibrary[i].author}`;
+
+    const numPages = document.createElement("p");
+    numPages.textContent = `Number of Pages: ${myLibrary[i].numPages}`;
+
+    const isRead = document.createElement("p");
+    isRead.textContent = `Is Read: ${myLibrary[i].isRead ? 'Read' : 'Not read yet'}`;
+    isRead.style.color = myLibrary[i].isRead ? 'green' : 'red';
+
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.classList.add("buttons");
+
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("button");
+    removeButton.style.backgroundColor = 'red';
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+        myLibrary.splice(i, 1);
+        displayList.removeChild(listItem);
+    });
+
+    const toggleReadButton = document.createElement("button");
+    toggleReadButton.classList.add("button");
+    toggleReadButton.style.backgroundColor = myLibrary[i].isRead ? 'red' : 'green';
+    toggleReadButton.textContent = myLibrary[i].isRead ? 'Not Read' : 'Read';
+    toggleReadButton.addEventListener('click', () => {
+        myLibrary[i].isRead = !myLibrary[i].isRead;
+        console.log(myLibrary[i].isRead);
+        if (myLibrary[i].isRead == true) {
+            toggleReadButton.style.backgroundColor = "red";
+            toggleReadButton.textContent = "Not Read";
+            isRead.textContent = "Is Read: Read";
+            isRead.style.color = "green";
+        } else {
+            toggleReadButton.style.backgroundColor = "green";
+            toggleReadButton.textContent = "Read";
+            isRead.textContent = "Is Read: Not read yet";
+            isRead.style.color = "red";
+        }
+    })
+
+    //appending items
+    listItem.appendChild(title);
+    listItem.appendChild(author);
+    listItem.appendChild(numPages);
+    listItem.appendChild(isRead);
+    buttonsDiv.appendChild(removeButton);
+    buttonsDiv.appendChild(toggleReadButton);
+    listItem.appendChild(buttonsDiv);
 
     displayList.appendChild(listItem);
     
