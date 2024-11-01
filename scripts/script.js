@@ -65,7 +65,7 @@ for (let i = 0; i < myLibrary.length; i++) {
         }
     })
 
-    //appending items
+    //appending child elements to their parent component
     listItem.appendChild(title);
     listItem.appendChild(author);
     listItem.appendChild(numPages);

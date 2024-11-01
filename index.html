@@ -7,8 +7,28 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <div id="overlay" class="overlay"></div>
     <h1>Library Management System</h1>
-    <button class="add-button">Add Book</button>
+    <button class="add-button">Add</button>
+    <form>
+        <div class="input-div">
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title" placeholder="Enter title....">
+        </div>
+        <div class="input-div">
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" placeholder="Enter author name.....">
+        </div>
+        <div class="input-div" >
+            <label for="numPages">Number of Pages: </label>
+            <input type="number" name="numPages" id="numPages">
+        </div>
+        <div class="input-div">
+            <label for="isRead">Is Read: </label>
+            <input type="checkbox" name="isRead" id="isRead">
+        </div>
+        <button type="submit" class="add-button">Add Book</button>
+    </form>
     <div class="display">
     </div>
     <script src="scripts/script.js"></script>

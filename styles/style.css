@@ -3,6 +3,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     background-color:  #F4F4F9;
+
 }
 
 .add-button {
@@ -11,6 +12,16 @@ body, html {
     border-radius: 10px;
     background-color: #3D5A80;
     color: white;
+}
+.overlay {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.7); 
 }
 
 .display {
@@ -26,6 +37,41 @@ body, html {
 h1 {
     text-align: center;
     font-size: 2.5rem;
+}
+
+form {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 30px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%; 
+    z-index: 1;
+}
+
+.input-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.input-div > input {
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.input-div > input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+    margin-right: 60%;
 }
 
 .card-component {
