@@ -4,11 +4,10 @@ const inputForm = document.getElementsByClassName("form")[0];
 const submitButton = document.getElementsByClassName("submit-button")[0];
 const displayList = document.getElementsByClassName("display")[0];
 const overlayDiv = document.getElementsByClassName("overlay")[0];
-const book1 = new Book(Math.random().toString(36).substr(2, 10), "The Midnight Library", "Matt Haig", 304, false);
-const book2 = new Book(Math.random().toString(36).substr(2, 10), "Educated: A Memoir", "Tara Westover", 352, true);
+const book1 = new Book("The Midnight Library", "Matt Haig", 304, false);
+const book2 = new Book("Educated: A Memoir", "Tara Westover", 352, true);
 
-function Book(id, title, author, numPages, isRead) {
-    this.id = id;
+function Book(title, author, numPages, isRead) {
     this.title = title;
     this.author = author;
     this.numPages = numPages;
@@ -16,7 +15,7 @@ function Book(id, title, author, numPages, isRead) {
 }
 
 function addBookToLibrary (title, author, numPages, isRead) {
-    const newBook = new Book(Math.random().toString(36).substr(2, 10), title, author, numPages, isRead);
+    const newBook = new Book(title, author, numPages, isRead);
     myLibrary.push(newBook);
 }
 myLibrary.push(book1);
@@ -25,7 +24,7 @@ displayBooks(myLibrary);
 
 function displayBooks(myLibrary) {
     displayList.innerHTML = "";
-    for (i = 0; i < myLibrary.length; i++) {
+    for (let i = 0; i < myLibrary.length; i++) {
         const listItem = document.createElement("div");
         listItem.classList.add("card-component");
 
@@ -58,8 +57,10 @@ function displayBooks(myLibrary) {
         toggleReadButton.classList.add("button");
         toggleReadButton.style.backgroundColor = myLibrary[i].isRead ? 'red' : 'green';
         toggleReadButton.textContent = myLibrary[i].isRead ? 'Not Read' : 'Read';
+        console.log(myLibrary[i].isRead);
         toggleReadButton.addEventListener('click', () => {
             myLibrary[i].isRead = !myLibrary[i].isRead;
+
             if (myLibrary[i].isRead == true) {
                 toggleReadButton.style.backgroundColor = "red";
                 toggleReadButton.textContent = "Not Read";
