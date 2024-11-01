@@ -1,5 +1,16 @@
 body, html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color:  #F4F4F9;
+}
+
+.add-button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #3D5A80;
+    color: white;
 }
 
 .display {

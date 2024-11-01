@@ -1,4 +1,5 @@
 const myLibrary = [];
+const addButton = document.getElementsByClassName("add-button")[0];
 const displayList = document.getElementsByClassName("display")[0];
 const book1 = new Book("The Midnight Library", "Matt Haig", 304, false);
 const book2 = new Book("Educated: A Memoir", "Tara Westover", 352, true);
@@ -51,7 +52,6 @@ for (let i = 0; i < myLibrary.length; i++) {
     toggleReadButton.textContent = myLibrary[i].isRead ? 'Not Read' : 'Read';
     toggleReadButton.addEventListener('click', () => {
         myLibrary[i].isRead = !myLibrary[i].isRead;
-        console.log(myLibrary[i].isRead);
         if (myLibrary[i].isRead == true) {
             toggleReadButton.style.backgroundColor = "red";
             toggleReadButton.textContent = "Not Read";
